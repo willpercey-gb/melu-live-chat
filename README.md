@@ -1,1 +1,1 @@
-# melu-live-chat
+# Melu Live Chat WordPress Plugin
