@@ -2,7 +2,7 @@
 /*
    Plugin Name: Melu Live Chat
    Plugin URI: http://wordpress.org/extend/plugins/melu-live-chat/
-   Version: 1.0
+   Version: 1.1
    Author: Melu Ltd
    Description: Melu is a managed live chat service that provides live chat software via this plugin, and highly trained professional operators that look after it for you.
    Text Domain: melu-live-chat

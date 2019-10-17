@@ -2,6 +2,14 @@
 
 class MeluLiveChat_OptionsManager
 {
+    public function __construct()
+    {
+        /**  Load Requests class if we don't already have it. */
+        if (!class_exists('Requests', false)) {
+            require_once ABSPATH . WPINC . '/class-requests.php';
+        }
+        $this->add_hooks();
+    }
 
     public function getOptionNamePrefix()
     {
@@ -30,19 +38,48 @@ class MeluLiveChat_OptionsManager
         return array();
     }
 
+    public function add_hooks()
+    {
+        add_action('plugins_loaded', array($this, 'add_transport'));
+    }
+
+    public function add_transport()
+    {
+        /** Get Our Transport Class and add it as a transport option */
+        require_once dirname(__FILE__) . '/Requests_Transport_cURL_Extended.php';
+        Requests::add_transport("Requests_Transport_cURL_Extended");
+    }
+
     public function verifyConnection()
     {
-        $response = wp_remote_get("https://meluchat.com/livechat/script.php?id=" . $this->getOption("key"));
-        $http_code = wp_remote_retrieve_response_code($response);
-        echo $http_code;
-        if (empty($response)) {
-            $active = "Melu Key Invalid";
-        } elseif ($http_code === 403) {
-            $active = "Melu Key Invalid";
-        } elseif ($http_code === 200 || $http_code === 301) {
-            $active = "Congratulations! Melu is active!";
-        } else {
-            $active = "We could not validate your activation key, please check frontend for functionality.";
+        $url = "https://meluchat.com/livechat/script.php?id=" . $this->getOption("key");
+        $options = array(
+            'transport' => 'Requests_Transport_cURL_Extended',
+        );
+        /**
+         * https://core.trac.wordpress.org/browser/tags/5.2/src/wp-includes/Requests/Transport/cURL.php#L376
+         * Because Referrer is set to $url we cannot use this option, so we set our own transport option which will extend correcting the referrer
+         * @class Requests_Transport_cUrl_Extended
+         */
+        //$args = array('headers' => array('Referrer: https://'.$_SERVER['HTTP_HOST'].'/'), 'transport' => 'Requests_Transport_cURL_Extended');
+        //$response = wp_remote_get("https://meluchat.com/livechat/script.php?id=" . $this->getOption("key"), $args);
+        //$http_code = wp_remote_retrieve_response_code($response);
+        /** cannot use wp_remote_ functions as we cannot set a referrer or a transport option using them so we use Requests::get instead */
+        if(function_exists('curl_version')) {
+            $response = Requests::get($url, array(), $options);
+            $http_code = $response->status_code;
+            if (empty($response)) {
+                $active = "Melu Key Invalid";
+            } elseif ($http_code === 403) {
+                $active = "Melu Key Invalid";
+            } elseif ($http_code === 200 || $http_code === 301) {
+                $active = "Congratulations! Melu is active!";
+            } else {
+                $active = "We could not validate your activation key, please check frontend for functionality.";
+            }
+        }
+        else{
+            $active = 'We could not validate your activation key, please check frontend for functionality';
         }
         return $active;
     }
@@ -290,7 +327,7 @@ class MeluLiveChat_OptionsManager
         if ($optionMetaData != null) {
             foreach ($optionMetaData as $aOptionKey => $aOptionMeta) {
                 if (isset($_POST[$aOptionKey], $_POST['melu_update_key'])) {
-                    if (wp_verify_nonce( $_POST['melu_update_key'], 'update_key')) {
+                    if (wp_verify_nonce($_POST['melu_update_key'], 'update_key')) {
                         $this->updateOption($aOptionKey, sanitize_text_field($_POST[$aOptionKey]));
                     }
                 }

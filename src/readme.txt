@@ -5,8 +5,8 @@ Tags: live chat, chatbot, chat bot, managed live chat, lead generation, customer
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Requires at least: 4.8
-Tested up to: 5.2.3
-Stable tag: 1.0
+Tested up to: 5.2.4
+Stable tag: 1.1
 
 == Description ==
 
@@ -17,6 +17,8 @@ Melu is perfect for businesses that don't have the internal human resources to l
 Melu's operators are always online and ready to engage with your website visitors from 8am to 10pm Monday to Friday (UK time).
 
 Melu is free to try for 30 days, then costs just £99 + VAT per month!
+
+When Melu is active on your website, our operators can see when you have visitors. Only basic information such as current page URL, IP address, browser, OS and screen resolution is available to us. We use this information to see whether a visitor has interacted with our live chat invite.
 
 == Installation ==
 
@@ -64,8 +66,11 @@ Yes! This is core to our business model - real people get better results. We nev
 Where are Melu's operators based?
 We have two teams of operators based in the UK and the USA.
 
+Do you invite our visitors to chat?
+Yes - we send invites to visitors by default, but you can tell us not to do this if you wish. We send an automatic invite to the visitor after 30 seconds of them landing on your website. If they choose to close the invite, our operators can see that, and therefore no more invites are sent. We will only send an invite to a visitor once, so they're not bombarded with invites every time they move to a different page.
+
 What are your operating hours?
-We currently operate between 8am and 10pm (UK time) Monday to Friday. We're adding weekends soon!
+We currently operate between 8am and 10pm (UK time - GMT/BST) Monday to Friday. We're adding weekends soon!
 
 What happens outside of operating hours?
 During these times the Melu chat widget goes into message mode, which is basically a contact form so visitors can leave a message. We can change this to instead link directly to your own form on your website if you'd prefer.
@@ -91,7 +96,6 @@ At the end of your trial we'll send you a report so you can see how things went.
 == Screenshots ==
 
 
-
 == Changelog ==
 
 = 0.1 =
@@ -99,3 +103,6 @@ At the end of your trial we'll send you a report so you can see how things went.
 
 = 1.0 =
 - Distribution Ready
+
+= 1.1 =
+Bug fixes to the system that checks if Melu is activated.

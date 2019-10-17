@@ -21,7 +21,7 @@
         </div>
         <br>
         <?php
-        if ($active !== 'Congratulations! Melu is active!'):
+        if ($active !== 'Congratulations! Melu is active!' xor $active === 'We could not validate your activation key, please check frontend for functionality'):
             ?>
             <form method="POST" action="">
                 <?php settings_fields($settingsGroup); ?>
@@ -70,7 +70,7 @@
         endif;
         ?>
     </div>
-    <?php if ($active !== 'Congratulations! Melu is active!'): ?>
+    <?php if ($active !== 'Congratulations! Melu is active!' xor $active === 'We could not validate your activation key, please check frontend for functionality'): ?>
         <div class="row clearfix pricing-tables">
             <div class="col-md-12 col-sm-12 no-pad-right no-pad-left">
                 <div class="pricing-table emphasis">
