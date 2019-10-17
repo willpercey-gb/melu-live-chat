@@ -1,0 +1,319 @@
+.melu_app_shell {
+    display: grid;
+    grid-template-columns: 65% 30%;
+    column-gap: 5%;
+
+    .pricing-table, .pricing-table .price {
+        border-bottom: 2px solid hsla(0, 0%, 100%, .2);
+    }
+
+    .orange {
+        color: #FF8C00;
+
+        a {
+            color: inherit;
+        }
+    }
+
+    .thin {
+        color: darkgray;
+    }
+
+    .login_container {
+        background: #fff;
+        padding: 25px 50px;
+
+        //h1 {
+        //    text-align: center;
+        //    //margin-bottom: 0;
+        //    margin-bottom:10px;
+        //}
+
+        h1.login_txt {
+            text-align: center;
+            max-width:200px;
+            margin: auto;
+            font-weight: 400;
+        }
+        p.login_label{
+            text-align: center;
+            max-width: 200px;
+            margin:10px auto;
+        }
+
+        form {
+            width: auto;
+            width: fit-content;
+            width: -moz-fit-content;
+            margin: 0 auto;
+
+            input {
+                border-radius: 50px;
+                margin-bottom: 10px;
+            }
+
+            .login-btn.btn-filled {
+                color: #fff !important;
+                font-family: Raleway, Open Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
+                font-weight: 700;
+                font-size: 11px;
+                text-transform: none;
+                letter-spacing: 1px;
+                background-color: #f89b1c;
+                border-color: #f89b1c;
+                border: none;
+                box-shadow: none;
+                border-radius: 50px;
+                padding: 10px 20px;
+                width: 100%;
+            }
+        }
+    }
+
+    & .row.clearfix.pricing-tables {
+        background: #fff;
+        padding: 25px 50px;
+
+        .pricing-table {
+            text-align: center;
+            padding-bottom: 40px;
+
+            &.emphasis {
+                background-color: #5378a0;
+            }
+
+            border-top: 2px solid hsla(0, 0%, 100%, .2);
+            border-left: 2px solid hsla(0, 0%, 100%, .2);
+
+            .btn-primary {
+                border-radius: 25px;
+                display: inline-block;
+                padding: 14px 28px 13px;
+                line-height: 1;
+                border: 2px solid #fff;
+                font-family: Raleway, Open Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
+                font-weight: 700;
+                font-size: 11px;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                color: #fff;
+                text-decoration: none;
+            }
+
+            .features {
+                margin: 40px 0;
+
+                li {
+                    color: #fff;
+                    font-size: 16px;
+                    text-align: center;
+                    margin-bottom: 16px;
+                }
+            }
+
+            .price {
+                padding: 40px 0;
+                font-weight: 600;
+
+                .sub {
+                    font-size: 16px;
+                    position: relative;
+                    bottom: 10px;
+                    color: #fff;
+                }
+
+                .amount {
+                    font-size: 56px;
+                    display: inline-block;
+                    padding: 0 8px;
+                    color: #fff;
+                }
+            }
+        }
+    }
+
+}
+
+.melu_app {
+    background: #fff;
+    padding: 25px 50px;
+
+    .logo_container {
+        max-width: 150px;
+
+        .logo_inner {
+            & img {
+                width: 100%;
+            }
+        }
+    }
+}
+
+.hidden {
+    display: none;
+    visibility: hidden;
+    height: 0px;
+    overflow: hidden;
+}
+
+.activation_label {
+    margin: 20px 0 0 0;
+}
+
+#refresh {
+    margin-top: 5px;
+    font-size: 15px;
+}
+
+.tgl {
+    display: none;
+
+    // add default box-sizing for this scope
+    &,
+    &:after,
+    &:before,
+    & *,
+    & *:after,
+    & *:before,
+    & + .tgl-btn {
+        box-sizing: border-box;
+
+        &::selection {
+            background: none;
+        }
+    }
+
+    + .tgl-btn {
+        outline: 0;
+        display: block;
+        width: 4em;
+        height: 2em;
+        position: relative;
+        cursor: pointer;
+        user-select: none;
+
+        &:after,
+        &:before {
+            position: relative;
+            display: block;
+            content: "";
+            width: 50%;
+            height: 100%;
+        }
+
+        &:after {
+            left: 0;
+        }
+
+        &:before {
+            display: none;
+        }
+    }
+
+    &:checked + .tgl-btn:after {
+        left: 50%;
+    }
+}
+
+.tgl-ios {
+    + .tgl-btn {
+        background: #fbfbfb;
+        border-radius: 2em;
+        padding: 2px;
+        transition: all .4s ease;
+        border: 1px solid #e8eae9;
+
+        &:after {
+            border-radius: 2em;
+            background: #fbfbfb;
+            transition: left .3s cubic-bezier(
+                    0.175, 0.885, 0.320, 1.275
+            ),
+            padding .3s ease, margin .3s ease;
+            box-shadow: 0 0 0 1px rgba(0, 0, 0, .1),
+            0 4px 0 rgba(0, 0, 0, .08);
+        }
+
+        &:hover:after {
+            will-change: padding;
+        }
+
+        &:active {
+            box-shadow: inset 0 0 0 2em #e8eae9;
+
+            &:after {
+                padding-right: .8em;
+            }
+        }
+    }
+
+    &:checked + .tgl-btn {
+        background: #86d993;
+
+        &:active {
+            box-shadow: none;
+
+            &:after {
+                margin-left: -.8em;
+            }
+        }
+    }
+}
+
+table.plugin-options-table {
+    width: 100%;
+    padding: 0;
+}
+
+table.plugin-options-table tr:nth-child(even) {
+    background: #f9f9f9
+}
+
+table.plugin-options-table tr:nth-child(odd) {
+    background: #FFF
+}
+
+table.plugin-options-table tr:first-child {
+    width: 35%;
+}
+
+table.plugin-options-table td {
+    vertical-align: middle;
+}
+
+table.plugin-options-table td + td {
+    width: auto
+}
+
+table.plugin-options-table td > p {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.login-btn-wrap {
+    width: auto;
+    width: fit-content;
+    width: -moz-fit-content;
+    margin: 0 auto;
+}
+
+.btn.btn-primary {
+    border-radius: 25px;
+    display: inline-block;
+    padding: 14px 80px;
+    line-height: 1;
+    border: 2px solid #6e9fd5;
+    background: #6e9fd5;
+    font-family: Raleway, Open Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #fff;
+    text-decoration: none;
+    margin-top: 50px;
+
+}
+
+
+/******  POINTLESS COMMENT TO MAKE SASS RENDER PROPERLY CAUSE SOME WEIRD ERROR ON MY DEV SERVER  ***/
