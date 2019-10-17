@@ -1,5 +1,5 @@
 === Melu Managed Live Chat ===
-Contributors: Melu, Garbott
+Contributors: melulivechat, willpercey-gb
 Donate link:
 Tags: live chat, chatbot, chat bot, managed live chat, lead generation, customer service, melu
 License: GPLv3
